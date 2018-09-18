@@ -45,6 +45,15 @@ void Player::draw(sf::RenderWindow * window)
 	window->draw(m_player);
 }
 
+bool Player::checkFinish(Finish * finish)
+{
+	if (m_player.getPosition().x == finish->getPosition().x
+		&& m_player.getPosition().y == finish->getPosition().y)
+		return true;
+
+	return false;
+}
+
 sf::Vector2f Player::getPosition()
 {
 	return m_position;

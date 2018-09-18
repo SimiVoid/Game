@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Block.h"
 #include "File.h"
+#include "Finish.h"
 #include "defines.h"
 
 class Game
@@ -21,6 +22,7 @@ private:
 	Player * m_player;
 	Block ** m_blocks;
 	File * m_gameFile;
+	Finish * m_finish;
 
 	void loadData();
 

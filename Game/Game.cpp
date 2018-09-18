@@ -14,6 +14,10 @@ void Game::loadData()
 		for (int j = 0; j < m_gameFile->getSize().y; ++j)
 			if (m_gameFile->getBoard()[i][j] == 1)
 				m_blocks[i][j] = Block(sf::Vector2f(i, j));
+			else if (m_gameFile->getBoard()[i][j] == 2)
+				m_player = new Player(sf::Vector2f(i, j));
+			else if (m_gameFile->getBoard()[i][j] == 3)
+				m_finish = new Finish(sf::Vector2f(i, j));
 }
 
 sf::RenderWindow * Game::getWindow()
@@ -37,6 +41,9 @@ void Game::events()
 void Game::update()
 {
 	m_player->move(m_blocks);
+
+	if (m_player->checkFinish(m_finish))
+		m_window->close();
 }
 
 void Game::render()
@@ -47,6 +54,7 @@ void Game::render()
 		for (int j = 0; j < FIELDS.y; ++j)
 			m_blocks[i][j].draw(m_window);
 
+	m_finish->draw(m_window);
 	m_player->draw(m_window);
 
 	m_window->display();
@@ -63,8 +71,6 @@ Game::Game()
 		m_blocks[i] = new Block[FIELDS.y];
 
 	loadData();
-
-	m_player = new Player(sf::Vector2f(0, 0));
 }
 
 Game::~Game()
@@ -73,4 +79,5 @@ Game::~Game()
 	delete m_player;
 	delete[] m_blocks;
 	delete m_gameFile;
+	delete m_finish;
 }
