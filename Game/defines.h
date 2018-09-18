@@ -7,4 +7,4 @@
 #define MAX_FPS 60
 #define FIELDS sf::Vector2i(WIN_SIZE.x / FIELD_SIZE, WIN_SIZE.y / FIELD_SIZE)
 #define RAND_VALUE 6
-#define NUMBER_OF_LEVELS 1
+#define NUMBER_OF_LEVELS 3

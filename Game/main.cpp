@@ -2,6 +2,8 @@
 
 #include "Menu.h"
 
+#include <iostream>
+
 int main()
 {
 	Menu * menu = new Menu();

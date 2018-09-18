@@ -10,6 +10,11 @@ void Game::loadData()
 
 	m_gameFile = new File(filePath);
 
+	m_blocks = new Block *[FIELDS.x];
+
+	for (int i = 0; i < FIELDS.x; ++i)
+		m_blocks[i] = new Block[FIELDS.y];
+
 	for (int i = 0; i < m_gameFile->getSize().x; ++i)
 		for (int j = 0; j < m_gameFile->getSize().y; ++j)
 			if (m_gameFile->getBoard()[i][j] == 1)
@@ -43,7 +48,7 @@ void Game::update()
 	m_player->move(m_blocks);
 
 	if (m_player->checkFinish(m_finish))
-		m_window->close();
+		loadData();
 }
 
 void Game::render()
@@ -64,11 +69,6 @@ Game::Game()
 {
 	m_window = new sf::RenderWindow(sf::VideoMode(WIN_SIZE.x, WIN_SIZE.y, 32), "Game", sf::Style::Close);
 	m_window->setFramerateLimit(MAX_FPS);
-
-	m_blocks = new Block * [FIELDS.x];
-
-	for (int i = 0; i < FIELDS.x; ++i)
-		m_blocks[i] = new Block[FIELDS.y];
 
 	loadData();
 }
