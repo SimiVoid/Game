@@ -1,8 +1,7 @@
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 
 #include "Menu.h"
-
-#include <iostream>
+#include "Config.h"
 
 int main()
 {
@@ -14,6 +13,6 @@ int main()
 		menu->update();
 		menu->render();
 	}
-
+	
 	return 0;
 }

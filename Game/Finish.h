@@ -2,8 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "defines.h"
-
 class Finish
 {
 private:
@@ -15,6 +13,6 @@ public:
 
 	sf::Vector2f getPosition();
 
-	Finish(sf::Vector2f position);
+	Finish(sf::Vector2f position, sf::Vector2f size);
 	~Finish();
 };

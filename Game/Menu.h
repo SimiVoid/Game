@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Game.h"
-#include "defines.h"
+#include "Config.h"
 
 class Menu
 {
@@ -15,7 +15,8 @@ private:
 	sf::Text m_exitText;
 
 	Game * game;
-	
+	Config * config;
+
 	bool onGame;
 
 	void gameActions();

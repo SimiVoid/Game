@@ -42,7 +42,7 @@ void Menu::menuActions()
 		&& mousePosition.x < m_playText.getPosition().x + m_playText.getLocalBounds().width / 2
 		&& mousePosition.y < m_playText.getPosition().y + m_playText.getLocalBounds().height / 2)
 	{
-		game = new Game();
+		game = new Game(config);
 		onGame = true;
 	}
 
@@ -101,6 +101,8 @@ void Menu::render()
 
 Menu::Menu()
 {
+	config = new Config();
+
 	m_window = new sf::RenderWindow(sf::VideoMode(400, 600, 32), "Game", sf::Style::Close);
 	m_window->setFramerateLimit(MAX_FPS);
 
@@ -112,4 +114,5 @@ Menu::Menu()
 Menu::~Menu()
 {
 	delete m_window;
+	delete config;
 }

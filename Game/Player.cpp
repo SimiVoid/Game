@@ -1,40 +1,40 @@
 #include "Player.h"
 
-void Player::move(Block ** blocks)
+void Player::move(Block ** blocks, Config * config, sf::Vector2f size, sf::Vector2i fieldsNumber)
 {
 	bool moveUp = true;
 	bool moveDown = true;
 	bool moveLeft = true;
 	bool moveRight = true;
 
-	for (int i = 0; i < FIELDS.x; ++i)
-		for (int j = 0; j < FIELDS.y; ++j)
+	for (int i = 0; i < fieldsNumber.x; ++i)
+		for (int j = 0; j < fieldsNumber.y; ++j)
 		{
-			if (blocks[i][j].getPosition().y + FIELD_SIZE == m_position.y && blocks[i][j].getPosition().x == m_position.x)
+			if (blocks[i][j].getPosition().y + size.y == m_position.y && blocks[i][j].getPosition().x == m_position.x)
 				moveUp = false;
-			if (blocks[i][j].getPosition().y - FIELD_SIZE == m_position.y && blocks[i][j].getPosition().x == m_position.x)
+			if (blocks[i][j].getPosition().y - size.y == m_position.y && blocks[i][j].getPosition().x == m_position.x)
 				moveDown = false;
-			if (blocks[i][j].getPosition().x + FIELD_SIZE == m_position.x && blocks[i][j].getPosition().y == m_position.y)
+			if (blocks[i][j].getPosition().x + size.x == m_position.x && blocks[i][j].getPosition().y == m_position.y)
 				moveLeft = false;
-			if (blocks[i][j].getPosition().x - FIELD_SIZE == m_position.x && blocks[i][j].getPosition().y == m_position.y)
+			if (blocks[i][j].getPosition().x - size.x == m_position.x && blocks[i][j].getPosition().y == m_position.y)
 				moveRight = false;
 		}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && m_position.y - FIELD_SIZE > 0 && moveUp)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && m_position.y - size.y > 0 && moveUp)
 	{
-		m_position.y -= FIELD_SIZE;
+		m_position.y -= size.y;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && m_position.y + FIELD_SIZE < WIN_SIZE.y && moveDown)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && m_position.y + size.y < config->getWindowSize().y && moveDown)
 	{
-		m_position.y += FIELD_SIZE;
+		m_position.y += size.x;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && m_position.x - FIELD_SIZE > 0 && moveLeft)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && m_position.x - size.x > 0 && moveLeft)
 	{
-		m_position.x -= FIELD_SIZE;
+		m_position.x -= size.x;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && m_position.x + FIELD_SIZE < WIN_SIZE.x && moveRight)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && m_position.x + size.x < config->getWindowSize().x && moveRight)
 	{
-		m_position.x += FIELD_SIZE;
+		m_position.x += size.x;
 	}
 
 	m_player.setPosition(m_position);
@@ -59,14 +59,14 @@ sf::Vector2f Player::getPosition()
 	return m_position;
 }
 
-Player::Player(sf::Vector2f position)
+Player::Player(sf::Vector2f position, sf::Vector2f size)
 {
-	m_position.x = position.x * FIELD_SIZE + FIELD_SIZE / 2;
-	m_position.y = position.y * FIELD_SIZE + FIELD_SIZE / 2;
+	m_position.x = position.x * size.x + size.x / 2;
+	m_position.y = position.y * size.y + size.y / 2;
 
-	m_player.setOrigin(FIELD_SIZE / 2, FIELD_SIZE / 2);
+	m_player.setOrigin(size.x / 2, size .y/ 2);
 	m_player.setFillColor(sf::Color::Green);
-	m_player.setSize(sf::Vector2f(FIELD_SIZE, FIELD_SIZE));
+	m_player.setSize(size);
 	m_player.setPosition(m_position);
 }
 

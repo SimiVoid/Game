@@ -127,7 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Block.h" />
-    <ClInclude Include="defines.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Finish.h" />
     <ClInclude Include="Game.h" />
@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Finish.cpp" />
     <ClCompile Include="Game.cpp" />

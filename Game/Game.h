@@ -2,8 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <iostream>
-#include <fstream>
 #include <string>
 #include <stdlib.h>
 #include <time.h>
@@ -12,7 +10,9 @@
 #include "Block.h"
 #include "File.h"
 #include "Finish.h"
-#include "defines.h"
+#include "Config.h"
+
+#define MAX_FPS 60
 
 class Game
 {
@@ -23,6 +23,10 @@ private:
 	Block ** m_blocks;
 	File * m_gameFile;
 	Finish * m_finish;
+	Config * m_config;
+
+	sf::Vector2i m_fieldsNumber;
+	sf::Vector2f m_fieldSize;
 
 	void loadData();
 
@@ -33,6 +37,6 @@ public:
 	void update();
 	void render();
 
-	Game();
+	Game(Config * config);
 	~Game();
 };

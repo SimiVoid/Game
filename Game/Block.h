@@ -2,8 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "defines.h"
-
 class Block
 {
 private:
@@ -18,7 +16,7 @@ public:
 	sf::Vector2f getPosition();
 
 	Block();
-	Block(sf::Vector2f position);
+	Block(sf::Vector2f position, sf::Vector2f size);
 	~Block();
 };
 
