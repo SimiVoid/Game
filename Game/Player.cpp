@@ -26,7 +26,7 @@ void Player::move(Block ** blocks, Config * config, sf::Vector2f size, sf::Vecto
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && m_position.y + size.y < config->getWindowSize().y && moveDown)
 	{
-		m_position.y += size.x;
+		m_position.y += size.y;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && m_position.x - size.x > 0 && moveLeft)
 	{
