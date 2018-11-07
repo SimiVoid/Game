@@ -1,3 +1,3 @@
 # Game
 
-Sample game.
+Easy game.
